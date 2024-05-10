@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #464646; /* Fundo cinza */
+  position: relative;
+}
+
+.body::before,
+.body::after {
+  content: ""; /* Removido */
+}
+
+.header {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #616161;
+  color: white;
+  border-bottom: 3px solid #000;
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #616161;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .left,
+.footer .right {
+  border: 2px solid black;
+  background-color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.footer div {
+  flex: 1;
+  text-align: center;
+}
+
+.ado {
+  display: inline-block;
+  border: none;
+  background-color: #ff9100;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0);
+  font-size: 40px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #3b3b3b;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0);
+  border-bottom: 3px solid #000000b4;
+  border-top: 3px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  display: none;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #6202df;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+.container.open ul {
+  display: block;
+}
+
+.container.open button.load-button {
+  display: none;
+}
+
+.container.open button.close-button {
+  display: block;
+}
