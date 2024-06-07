@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Confirmada - Travellers+</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 CDN -->
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="content">
+            <nav>
+                <p class="brand">Travellers<strong>Plus</strong></p>
+                <ul>
+                </ul>
+            </nav>
+            <div class="header-info">
+                <p><i class="fas fa-lock"></i> Seus dados estão seguros conosco.</p>
+                <p><i class="fas fa-shield-alt"></i> Utilizamos criptografia para proteger suas informações.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Confirmação da Reserva e Alteração de Dados -->
+    <div class="container">
+        <!-- Confirmação da Reserva -->
+        <div class="reserva-confirmada">
+            <h2>Sua Reserva Foi Confirmada</h2>
+            <div class="info">
+                <p><strong>Nome:</strong> <span id="nomeReserva"></span></p>
+                <p><strong>Número do Cartão:</strong> <span id="numeroCartaoReserva"></span></p>
+                <p><strong>Validade:</strong> <span id="validadeReserva"></span></p>
+                <p><strong>CVV:</strong> <span id="cvvReserva"></span></p>
+                <p><strong>Método de Pagamento:</strong> <span id="metodoPagamentoReserva"></span></p>
+                <p><strong>Endereço:</strong> <span id="enderecoReserva"></span></p>
+                <p><strong>CEP:</strong> <span id="cepReserva"></span></p>
+                <p><strong>Telefone:</strong> <span id="telefoneReserva"></span></p>
+                <p><strong>Hotel:</strong> <span id="hotelReserva"></span></p>
+                <p><strong>Método de Transporte:</strong> <span id="metodoTransporteReserva"></span></p>
+            </div>
+            <button id="cancelarBtn" class="cancelar-btn">Cancelar / Reembolsar</button>
+        </div>
+
+        <!-- Alteração de Dados -->
+        <div class="alterar-dados">
+            <h2>Alterar Dados</h2>
+            <form id="alterarDadosForm">
+                <div class="form-group">
+                    <label for="novoNome">Nome:</label>
+                    <input type="text" id="novoNome" name="novoNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="novoEmail">Email:</label>
+                    <input type="email" id="novoEmail" name="novoEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="novaSenha">Senha:</label>
+                    <input type="password" id="novaSenha" name="novaSenha" required>
+                </div>
+                <button type="button" id="salvarBtn" class="salvar-btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="content">
+            <div class="footer-links">
+                <div class="footer-company">
+                    <h4>Seus dados estão aqui traveller!</h4>                            
+                </div>
+                <div class="footer-rental">
+                    
+                    
+                </div>
+                <div class="footer-social">
+                    <h4>Permaneça Conectado</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4></h4>
+                    <ul>
+                        <li>+55 11 911111111</li>
+                        <li>viniciusdamacenoo111@gmail.com</li>
+                        <li>Senac-SP, São Paulo-SP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="last">
+            <p><i class="fas fa-lock"></i> Seus dados estão seguros conosco. Utilizamos criptografia para proteger suas informações.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var nomeReserva = localStorage.getItem("nomeReserva");
+            var numeroCartaoReserva = localStorage.getItem("numeroCartaoReserva");
+            var validadeReserva = localStorage.getItem("validadeReserva");
+            var cvvReserva = localStorage.getItem("cvvReserva");
+            var metodoPagamentoReserva = localStorage.getItem("metodoPagamentoReserva");
+            var enderecoReserva = localStorage.getItem("enderecoReserva");
+            var cepReserva = localStorage.getItem("cepReserva");
+            var telefoneReserva = localStorage.getItem("telefoneReserva");
+            var hotelReserva = localStorage.getItem("hotelReserva");
+            var metodoTransporteReserva = localStorage.getItem("metodoTransporteReserva");
+
+            document.getElementById("nomeReserva").innerText = nomeReserva;
+            document.getElementById("numeroCartaoReserva").innerText = numeroCartaoReserva;
+            document.getElementById("validadeReserva").innerText = validadeReserva;
+            document.getElementById("cvvReserva").innerText = cvvReserva;
+            document.getElementById("metodoPagamentoReserva").innerText = metodoPagamentoReserva;
+            document.getElementById("enderecoReserva").innerText = enderecoReserva;
+            document.getElementById("cepReserva").innerText = cepReserva;
+            document.getElementById("telefoneReserva").innerText = telefoneReserva;
+            document.getElementById("hotelReserva").innerText = hotelReserva;
+            document.getElementById("metodoTransporteReserva").innerText = metodoTransporteReserva;
+
+            document.getElementById("cancelarBtn").addEventListener("click", function () {
+                Swal.fire({
+                    title: 'Reserva Cancelada!',
+                    text: 'Seu dinheiro será reembolsado em até 1hr.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.clear();
+                        window.location.href = 'index.html';
+                    }
+                });
+            });
+
+            document.getElementById("salvarBtn").addEventListener("click", function () {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand {
+            font-size: 50px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .header-info {
+            margin-left: auto;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 35px;
+        }
+
+        .header-info p {
+            margin: 5px 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .reserva-confirmada,
+        .alterar-dados {
+            width: 48%;
+            padding: 30px;
+            background-color: #5f39c9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.24);
+        }
+
+        .reserva-confirmada h2,
+        .alterar-dados h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .reserva-confirmada .info,
+        .alterar-dados .form-group {
+            margin-bottom: 30px;
+        }
+
+        .reserva-confirmada p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .reserva-confirmada strong {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .cancelar-btn,
+        .salvar-btn {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cancelar-btn {
+            background-color: #f44336;
+        }
+
+        .cancelar-btn:hover {
+            background-color: #df372b;
+            transform: translateY(-3px);
+        }
+
+        .salvar-btn {
+            background-color: #4CAF50;
+        }
+
+        .salvar-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            color: #ffd700;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-links h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .footer-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-social {
+            margin-left: auto;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        .last {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #222;
+            color: #fff;
+            font-size: 0.9em;
+        }
+
+        .last p {
+            margin: 5px 0;
+        }
+    </style>
+</body>
+
+</html>

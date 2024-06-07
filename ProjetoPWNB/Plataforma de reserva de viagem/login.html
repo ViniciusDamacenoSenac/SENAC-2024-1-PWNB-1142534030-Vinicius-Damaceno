@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/senha.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- JS & jQuery -->
+    <script type="text/javascript" src="js/TelaLoginCadastro.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<div id="successMessage" class="success-message" style="display: none;"></div>
+
+<body>
+
+    <div id="container">
+        <div class="banner">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+            <img src="img/login.png" alt="imagem-login">
+            <p style="color: #fff; font-weight: 400;">
+                Seja bem vindo, acesse e aproveite todo o conteúdo,
+                <br>somos uma equipe de profissionais empenhados em
+                <br>trazer o melhor conteúdo direcionado a você, usuário.
+            </p>
+        </div>
+
+        <div class="box-login">
+            <h1>
+                Olá!<br>
+                Seja bem vindo de volta.
+            </h1>
+
+            <div class="box">
+                <h2>Faça o seu login agora</h2>
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="password" id="password" placeholder="Password">
+
+                <a href="esqueceu-senha.html">
+                    <p>Esqueceu a sua senha?</p>
+                </a>
+
+                <button id="loginButton">Login</button>
+
+                <a href="register.html">
+                    <p>Criar uma conta</p>
+                </a>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/login.php">
+                        <img src="img/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://accounts.google.com/signin/v2/identifier?service=mail">
+                        <img src="img/google.png" alt="Google">
+                    </a>
+                    <a href="https://twitter.com/login">
+                    <img src="img/twitter.png" alt="Twitter">
+                    
+                     <a href="https://github.com/ViniciusDamacenoSenac/SENAC-2024-1-PWNB-1142534030-Vinicius-Damaceno.git">
+                    <img src="img/github.png" alt="GitHub">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script src="js/TelaLogin.js"></script>
+        
+<style>
+.error-message {
+  color: red;
+  display: none; /* Começa escondida */
+}
+
+.success-message {
+  color: rgb(4, 180, 13);
+  display: none;
+  text-align: top;
+  margin-top: 20px;
+  font-size: 50px;
+}
+</style>
+</body>
+
+</html>

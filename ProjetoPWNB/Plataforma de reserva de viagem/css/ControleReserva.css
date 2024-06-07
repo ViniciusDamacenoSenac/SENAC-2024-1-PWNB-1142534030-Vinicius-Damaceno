@@ -1,0 +1,111 @@
+/* Initial state for fade-in animation */
+.fade-in * {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Loaded state for fade-in animation */
+.fade-in.loaded * {
+  opacity: 1;
+}
+
+/* Initial state for scroll-based animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px); /* Example transformation */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* In-view state for scroll-based animations */
+.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos do cabeçalho */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4d10f5;
+  color: #fff;
+  padding: 10px 0;
+  z-index: 1000; /* Para garantir que o cabeçalho fique acima do conteúdo */
+  text-align: center; /* Centraliza o texto */
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-around; /* Distribui os itens de forma uniforme no espaço disponível */
+  align-items: flex-end; /* Alinha os itens na parte inferior do container */
+  height: 90%; /* Reduz a altura do ul para 90% para mover os itens um pouco para cima */
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estilos do formulário de pagamento */
+.pagamento-form {
+  position: absolute; /* Posicionamento absoluto */
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta a posição para que o centro do elemento esteja no ponto (50%, 50%) */
+  width: 90%; /* Aumenta a largura para 90% */
+  max-width: 800px; /* Aumenta a largura máxima para 800px */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: #333; /* Altera a cor de fundo para branco para aumentar a visibilidade */
+  color: #000000; /* Altera a cor do texto para preto para aumentar a visibilidade */
+  font-size: 16px; /* Altera o tamanho da fonte */
+}
+
+/* Estilos do rodapé */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  height: 10vh; /* Definindo o rodapé para ocupar 10% da altura da janela */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links h6 {
+  margin-bottom: 5px;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 30px;
+  margin: 0 5px;
+}
+
+.last {
+  margin-top: 20px;
+}

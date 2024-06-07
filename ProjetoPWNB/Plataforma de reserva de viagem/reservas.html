@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Confirmada - Travellers+</title>
+  <link rel="stylesheet" href="css/Reservas.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="fade-in">
+  <header>
+    <div class="content">
+      <nav>
+        
+        <p class="brand">Travellers<strong>Plus</strong></p>
+        <ul>
+          
+        <li><a href="paginaDest.html">Minhas Reservas</a></li>
+        </ul>
+      </nav>
+      <div class="header-info">
+        <p><i class="fas fa-lock"></i> Seus dados estão seguros conosco.</p>
+        <p><i class="fas fa-shield-alt"></i> Utilizamos criptografia para proteger suas informações.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Formulário de pagamento -->
+  <div class="pagamento-form">
+    <h2>Informe seus dados para a conclusão!</h2>
+    <form id="payment-form">
+      <label for="nome">Nome no Cartão</label>
+      <input type="text" id="nome" name="nome" required>
+      <span class="security-tip">Seu nome está seguro conosco.</span>
+
+      <label for="numero-cartao">Número do Cartão</label>
+      <input type="text" id="numero-cartao" name="numero-cartao" pattern="[0-9]{16}" title="Por favor, insira um número de cartão válido de 16 dígitos." required>
+      <span class="security-tip">Seu número de cartão está seguro conosco.</span>
+
+      <label for="validade">Validade</label>
+      <input type="text" id="validade" name="validade" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Por favor, insira uma data de validade no formato MM/AA." placeholder="MM/AA" required>
+      <span class="security-tip">Dados criptografados para sua proteção.</span>
+
+      <label for="cvv">Código de segurança</label>
+      <input type="text" id="cvv" name="cvv" pattern="[0-9]{3}" title="Por favor, insira um código de segurança válido de 3 dígitos." required>
+      <span class="security-tip">Protegemos seu CVV com tecnologia de ponta.</span>
+
+      <label for="endereco">Endereço de Cobrança</label>
+      <input type="text" id="endereco" name="endereco" required>
+      <span class="security-tip">Seu endereço está seguro conosco.</span>
+
+      <label for="cep">CEP</label>
+      <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" title="Por favor, insira um CEP válido no formato 00000-000." required>
+      <span class="security-tip">Garantimos a privacidade do seu CEP.</span>
+
+      <label for="telefone">Telefone de Contato</label>
+      <input type="text" id="telefone" name="telefone" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" title="Por favor, insira um número de telefone válido no formato (00) 00000-0000." required>
+      <span class="security-tip">Seu telefone está seguro conosco.</span>
+
+      <label for="metodo-transporte">Método de Transporte</label>
+      <select id="metodo-transporte" name="metodo-transporte" required>
+        <option value="">Selecione um método de transporte</option>
+        <option value="onibus">Ônibus</option>
+        <option value="aviao">Avião</option>
+      </select>
+
+      <label for="metodo-pagamento">Método de Pagamento</label>
+      <select id="metodo-pagamento" name="metodo-pagamento" required>
+        <option value="">Selecione um método de pagamento</option>
+        <option value="pix">PIX</option>
+        <option value="boleto">Boleto</option>
+        <option value="Debito">Débito</option>
+        <option value="Credito">Crédito</option>
+      </select>
+      <span class="security-tip">Escolha o método mais conveniente para você.</span>
+
+      <label for="hotel">Seleção de Hotel</label>
+      <select id="hotel" name="hotel" onchange="showHotelImages(this.value)" required>
+        <option value="">Selecione um hotel</option>
+        <option value="hotel1">Hotel 1 / Classe A</option>
+        <option value="hotel2">Hotel 2 / Classe B</option>
+        <option value="hotel3">Hotel 3 / Classe C</option>
+        <option value="hotel4">Hotel 4 / Classe D</option>
+      </select>
+      <span class="security-tip">Selecione o hotel desejado para visualizar suas fotos.</span>
+
+      <div id="hotel-images">
+        <!-- As imagens dos hotéis serão carregadas dinamicamente aqui -->
+      </div>
+
+      <button type="submit" id="pagar-button">Pagar</button>
+      <button type="reset">Limpar</button>
+    </form>
+  </div>
+
+  <footer>
+    <div class="main">
+      <div class="content footer-links">
+        <div class="footer-company">
+          <h4>Empresa</h4>
+          <h6>Sobre</h6>
+          <h6>Contato</h6>
+        </div>
+        <div class="footer-rental">
+          <h4>Aluguel</h4>
+          <h6>Recomendações</h6>
+          <h6>Catálogo</h6>
+          <h6>Ajuda</h6>
+        </div>
+        <div class="footer-social">
+          <div class="footer-contact">
+            <h4>Contato</h4>
+            <h6>+55 11 911111111</h6>
+            <h6>viniciusdamacenoo111@gmail.com</h6>
+            <h6>Senac-SP, São Paulo-SP</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="last">Travellers+ 2024</div>
+  </footer>
+
+  <script src="js/reserva.js"></script>
+</body>
+<head>
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+
+</html>
