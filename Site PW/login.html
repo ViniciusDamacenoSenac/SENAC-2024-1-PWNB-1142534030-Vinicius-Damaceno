@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        .success-message {
+            color: rgb(4, 180, 13);
+            display: none;
+            text-align: top;
+            margin-top: 20px;
+            font-size: 50px;
+        }
+
+        .box-login {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .box {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #6200ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #785eef;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="box-login">
+            <h1>Seja bem vindo de volta.
+              Professor o usuario de acesso é: ViniciusD
+              senha é: Vinicius7155
+
+            </h1>
+            <div class="box">
+                <h2>Faça o seu login agora</h2>
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <button id="loginButton">Login</button>
+            </div>
+        </div>
+        <div id="successMessage" class="success-message" style="display: none;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#loginButton').click(function () {
+                var username = $('#username').val().trim();
+                var password = $('#password').val().trim();
+
+                // Simulação de validação de login com localStorage
+                var storedUsername = "ViniciusD"; 
+                var storedPassword = "Vinicius7155"; 
+
+                if (username === storedUsername && password === storedPassword) {
+                    // Login bem-sucedido
+                    $('#successMessage').text('Login bem-sucedido! Redirecionando...').fadeIn();
+                    setTimeout(function () {
+                        // Redirecionar para a página de índice
+                        window.location.href = "index.html";
+                    }, 2000); // Espera 2 segundos antes de redirecionar
+                } else {
+                    // Login inválido
+                    $('.error-message').text("Credenciais inválidas. Por favor, tente novamente.").fadeIn();
+                }
+
+                return false; // Evita o envio do formulário
+            });
+        });
+    </script>
+</body>
+
+</html>

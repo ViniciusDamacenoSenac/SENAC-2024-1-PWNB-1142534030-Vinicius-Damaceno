@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Confirmada - Travellers+</title>
+ 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.classList.add("loaded");
+  
+      // Adiciona um evento de clique ao botão "Pagar"
+      document.getElementById("pagar-button").addEventListener("click", function(event) {
+        // Previne o comportamento padrão do formulário
+        event.preventDefault();
+  
+        // Verifica se todos os campos estão preenchidos
+        if (validarCampos()) {
+          // Simular um processamento de pagamento (pode ser substituído pela sua lógica real)
+          setTimeout(() => {
+            mostrarNotificacaoPagamentoConcluido();
+          }, 1000); // Simula um segundo de processamento
+  
+        } else {
+          // Se algum campo estiver vazio, exibe uma mensagem de erro
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Por favor, preencha todos os campos do formulário.',
+            confirmButtonText: 'OK'
+          });
+        }
+      });
+    });
+  
+    // Função para verificar se todos os campos do formulário estão preenchidos e o número do cartão é válido
+    function validarCampos() {
+      var nome = document.getElementById('nome').value;
+      var numeroCartao = document.getElementById('numero-cartao').value;
+      var validade = document.getElementById('validade').value;
+      var cvv = document.getElementById('cvv').value;
+      var metodoPagamento = document.getElementById('metodo-pagamento').value;
+      var endereco = document.getElementById('endereco').value;
+      var cep = document.getElementById('cep').value;
+      var telefone = document.getElementById('telefone').value;
+  
+      if (nome === '' || numeroCartao === '' || validade === '' || cvv === '' || metodoPagamento === '' || endereco === '' || cep === '' || telefone === '') {
+        return false;
+      }
+  
+      if (!isValidCreditCard(numeroCartao)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Número de cartão de crédito inválido.',
+          confirmButtonText: 'OK'
+        });
+        return false;
+      }
+  
+      return true;
+    }
+  
+    // Função para verificar o número do cartão de crédito
+    function isValidCreditCard(number) {
+      // Implementação básica de verificação de cartão de crédito (Luhn algorithm)
+      // Pode ser expandido para verificar os tipos de cartões e validades específicas
+      return true; // Placeholder para a validação real
+    }
+  
+    // Função para exibir a notificação de pagamento concluído
+    function mostrarNotificacaoPagamentoConcluido() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Pagamento Concluído!',
+        text: 'O pagamento foi realizado com sucesso.',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirecionar para a página de destino após o usuário clicar em "OK"
+          redirecionarParaPaginaDest();
+        }
+      });
+    }
+  
+    // Função para redirecionar para a página index.html
+    function redirecionarParaPaginaDest() {
+      window.location.href = 'index.html'; // Redireciona para index.html
+    }
+  </script>
+  
+</head>
+
+<body class="fade-in">
+  <header>
+    <div class="content">
+      <nav>
+        <div class="header-info">
+          <p><i class="fas fa-lock"></i> Seus dados estão seguros conosco.</p>
+          <p><i class="fas fa-shield-alt"></i> Utilizamos criptografia para proteger suas informações.</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="pagamento-form">
+    <h2>Informe seus dados para a conclusão!</h2>
+    <form id="payment-form">
+      <label for="nome">Nome no Cartão</label>
+      <input type="text" id="nome" name="nome" required>
+      <span class="security-tip">Seu nome está seguro conosco.</span>
+
+      <label for="numero-cartao">Número do Cartão</label>
+      <input type="text" id="numero-cartao" name="numero-cartao" pattern="[0-9]{16}" title="Por favor, insira um número de cartão válido de 16 dígitos." required>
+      <span class="security-tip">Seu número de cartão está seguro conosco.</span>
+
+      <label for="validade">Validade</label>
+      <input type="text" id="validade" name="validade" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Por favor, insira uma data de validade no formato MM/AA." placeholder="MM/AA" required>
+      <span class="security-tip">Dados criptografados para sua proteção.</span>
+
+      <label for="cvv">Código de segurança</label>
+      <input type="text" id="cvv" name="cvv" pattern="[0-9]{3}" title="Por favor, insira um código de segurança válido de 3 dígitos." required>
+      <span class="security-tip">Protegemos seu CVV com tecnologia de ponta.</span>
+
+      <label for="endereco">Endereço de Cobrança</label>
+      <input type="text" id="endereco" name="endereco" required>
+      <span class="security-tip">Seu endereço está seguro conosco.</span>
+
+      <label for="cep">CEP</label>
+      <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" title="Por favor, insira um CEP válido no formato 00000-000." required>
+      <span class="security-tip">Garantimos a privacidade do seu CEP.</span>
+
+      <label for="telefone">Telefone de Contato</label>
+      <input type="text" id="telefone" name="telefone" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" title="Por favor, insira um número de telefone válido no formato (00) 00000-0000." required>
+      <span class="security-tip">Seu telefone está seguro conosco.</span>
+
+      <label for="metodo-pagamento">Método de Pagamento</label>
+      <select id="metodo-pagamento" name="metodo-pagamento" required>
+        <option value="">Selecione um método de pagamento</option>
+        <option value="pix">PIX</option>
+        <option value="boleto">Boleto</option>
+        <option value="Debito">Débito</option>
+        <option value="Credito">Crédito</option>
+      </select>
+      <span class="security-tip">Escolha o método mais conveniente para você.</span>
+
+      <button type="submit" id="pagar-button">Pagar</button>
+      <button type="reset">Limpar</button>
+    </form>
+  </div>
+  <style>
+    /* Estilos do cabeçalho */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #4d10f5;
+      color: #fff;
+      padding: 10px 0;
+      z-index: 1000; /* Para garantir que o cabeçalho fique acima do conteúdo */
+      text-align: center; /* Centraliza o texto */
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      justify-content: space-around; /* Distribui os itens de forma uniforme no espaço disponível */
+      align-items: flex-end; /* Alinha os itens na parte inferior do container */
+      height: 90%; /* Reduz a altura do ul para 90% para mover os itens um pouco para cima */
+    }
+  }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Estilos do formulário de pagamento */
+    .pagamento-form {
+      width: 90%; /* Aumenta a largura para 90% */
+      max-width: 800px; /* Aumenta a largura máxima para 800px */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgb(0, 0, 0);
+      background-color: #333; /* Altera a cor de fundo para branco para aumentar a visibilidade */
+      color: #fff; /* Altera a cor do texto para preto para aumentar a visibilidade */
+      font-size: 16px; /* Altera o tamanho da fonte */
+      margin: 0 auto; /* Centraliza horizontalmente */
+      margin-top: 80px; /* Margem superior para evitar sobreposição com o cabeçalho fixo */
+    }
+
+    .pagamento-form h2 {
+      text-align: center;
+    }
+
+    .pagamento-form label {
+      display: block;
+      margin-top: 20px;
+    }
+
+    .pagamento-form input,
+    .pagamento-form select {
+      width: calc(100% - 20px); /* Ajusta a largura para preencher o espaço, descontando o padding */
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .pagamento-form .security-tip {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .pagamento-form button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4d10f5;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pagamento-form button:hover {
+      background-color: #3e0db2;
+    }
+
+    .pagamento-form button[type="reset"] {
+      background-color: #bbb;
+      color: #000;
+      margin-left: 10px;
+    }
+
+    /* Animações */
+    .fade-in * {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .fade-in.loaded * {
+      opacity: 1;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px); /* Exemplo de transformação */
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Outros estilos */
+    .header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-info p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+  </style>
+
+</body>
+
+</html>
